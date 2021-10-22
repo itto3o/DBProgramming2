@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBProgramming2", "DBProgram
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketBrowser", "MarketBrowser\MarketBrowser.csproj", "{C18BB339-FF5B-4DC7-AB74-2EA70B54FA4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "studentManagementDB", "studentManagementDB\studentManagementDB.csproj", "{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{C18BB339-FF5B-4DC7-AB74-2EA70B54FA4E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C18BB339-FF5B-4DC7-AB74-2EA70B54FA4E}.Release|x86.ActiveCfg = Release|Any CPU
 		{C18BB339-FF5B-4DC7-AB74-2EA70B54FA4E}.Release|x86.Build.0 = Release|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Debug|x86.Build.0 = Debug|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Release|x86.ActiveCfg = Release|Any CPU
+		{6CB08D31-E1F3-45FC-816C-EE856E6FBCA0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

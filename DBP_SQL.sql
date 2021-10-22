@@ -1,0 +1,1 @@
+SELECT * FROM s5584534.student;
