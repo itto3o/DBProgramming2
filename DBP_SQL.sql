@@ -1,1 +1,1 @@
-SELECT * FROM s5584534.student;
+SELECT * FROM s5584534.user;
