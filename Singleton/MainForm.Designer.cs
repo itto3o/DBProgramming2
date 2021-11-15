@@ -108,6 +108,7 @@ namespace Singleton
             this.checkBoxStartRecentUseMajorInfoPrint.TabIndex = 1;
             this.checkBoxStartRecentUseMajorInfoPrint.Text = "프로그램 시작시 최근 사용 전공 정보부터 출력";
             this.checkBoxStartRecentUseMajorInfoPrint.UseVisualStyleBackColor = true;
+            this.checkBoxStartRecentUseMajorInfoPrint.CheckedChanged += new System.EventHandler(this.checkBoxStartRecentUseMajorInfoPrint_CheckedChanged);
             // 
             // checkBoxStartAutoLoadStudentInfo
             // 
@@ -118,6 +119,7 @@ namespace Singleton
             this.checkBoxStartAutoLoadStudentInfo.TabIndex = 0;
             this.checkBoxStartAutoLoadStudentInfo.Text = "프로그램 시작시 자동으로 학생정보 로드";
             this.checkBoxStartAutoLoadStudentInfo.UseVisualStyleBackColor = true;
+            this.checkBoxStartAutoLoadStudentInfo.CheckedChanged += new System.EventHandler(this.checkBoxStartAutoLoadStudentInfo_CheckedChanged);
             // 
             // listBoxMajorList
             // 
@@ -127,6 +129,7 @@ namespace Singleton
             this.listBoxMajorList.Name = "listBoxMajorList";
             this.listBoxMajorList.Size = new System.Drawing.Size(173, 124);
             this.listBoxMajorList.TabIndex = 3;
+            this.listBoxMajorList.SelectedIndexChanged += new System.EventHandler(this.listBoxMajorList_SelectedIndexChanged);
             // 
             // textBoxNewMajorInput
             // 
