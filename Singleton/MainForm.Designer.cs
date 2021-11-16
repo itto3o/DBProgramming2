@@ -78,6 +78,7 @@ namespace Singleton
             this.buttonLoadStudentInfo.TabIndex = 0;
             this.buttonLoadStudentInfo.Text = "학생정보 불러오기";
             this.buttonLoadStudentInfo.UseVisualStyleBackColor = true;
+            this.buttonLoadStudentInfo.Click += new System.EventHandler(this.buttonLoadStudentInfo_Click);
             // 
             // label1
             // 
@@ -130,6 +131,7 @@ namespace Singleton
             this.listBoxMajorList.Size = new System.Drawing.Size(173, 124);
             this.listBoxMajorList.TabIndex = 3;
             this.listBoxMajorList.SelectedIndexChanged += new System.EventHandler(this.listBoxMajorList_SelectedIndexChanged);
+            this.listBoxMajorList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxMajorList_MouseDoubleClick);
             // 
             // textBoxNewMajorInput
             // 
@@ -147,6 +149,7 @@ namespace Singleton
             this.buttonMajorAdd.TabIndex = 5;
             this.buttonMajorAdd.Text = "전공추가";
             this.buttonMajorAdd.UseVisualStyleBackColor = true;
+            this.buttonMajorAdd.Click += new System.EventHandler(this.buttonMajorAdd_Click);
             // 
             // groupBoxStudent1
             // 
@@ -220,6 +223,7 @@ namespace Singleton
             this.buttonStudent1Save.TabIndex = 7;
             this.buttonStudent1Save.Text = "저장";
             this.buttonStudent1Save.UseVisualStyleBackColor = true;
+            this.buttonStudent1Save.Click += new System.EventHandler(this.buttonStudent1Save_Click);
             // 
             // buttonStudent1Delete
             // 
@@ -229,6 +233,7 @@ namespace Singleton
             this.buttonStudent1Delete.TabIndex = 8;
             this.buttonStudent1Delete.Text = "삭제";
             this.buttonStudent1Delete.UseVisualStyleBackColor = true;
+            this.buttonStudent1Delete.Click += new System.EventHandler(this.buttonStudent1Delete_Click);
             // 
             // buttonStudent2Delete
             // 
@@ -238,6 +243,7 @@ namespace Singleton
             this.buttonStudent2Delete.TabIndex = 11;
             this.buttonStudent2Delete.Text = "삭제";
             this.buttonStudent2Delete.UseVisualStyleBackColor = true;
+            this.buttonStudent2Delete.Click += new System.EventHandler(this.buttonStudent2Delete_Click);
             // 
             // buttonStudent2Save
             // 
@@ -247,6 +253,7 @@ namespace Singleton
             this.buttonStudent2Save.TabIndex = 10;
             this.buttonStudent2Save.Text = "저장";
             this.buttonStudent2Save.UseVisualStyleBackColor = true;
+            this.buttonStudent2Save.Click += new System.EventHandler(this.buttonStudent2Save_Click);
             // 
             // groupBoxStudent2
             // 
@@ -320,6 +327,7 @@ namespace Singleton
             this.buttonStudent3Delete.TabIndex = 11;
             this.buttonStudent3Delete.Text = "삭제";
             this.buttonStudent3Delete.UseVisualStyleBackColor = true;
+            this.buttonStudent3Delete.Click += new System.EventHandler(this.buttonStudent3Delete_Click);
             // 
             // buttonStudent3Save
             // 
@@ -329,6 +337,7 @@ namespace Singleton
             this.buttonStudent3Save.TabIndex = 10;
             this.buttonStudent3Save.Text = "저장";
             this.buttonStudent3Save.UseVisualStyleBackColor = true;
+            this.buttonStudent3Save.Click += new System.EventHandler(this.buttonStudent3Save_Click);
             // 
             // groupBoxStudent3
             // 
@@ -436,13 +445,8 @@ namespace Singleton
         private System.Windows.Forms.GroupBox groupBoxConfigManager;
         private System.Windows.Forms.CheckBox checkBoxStartAutoLoadStudentInfo;
         private System.Windows.Forms.CheckBox checkBoxStartRecentUseMajorInfoPrint;
-        private System.Windows.Forms.ListBox listBoxMajorList;
-        private System.Windows.Forms.TextBox textBoxNewMajorInput;
         private System.Windows.Forms.Button buttonMajorAdd;
         private System.Windows.Forms.GroupBox groupBoxStudent1;
-        private System.Windows.Forms.ComboBox comboBoxStudent1Gender;
-        private System.Windows.Forms.TextBox textBoxStudent1Sid;
-        private System.Windows.Forms.TextBox textBoxStudent1Name;
         private System.Windows.Forms.Label labelStudnet1Gender;
         private System.Windows.Forms.Label labelStudent1Sid;
         private System.Windows.Forms.Label labelStudent1Name;
@@ -451,21 +455,26 @@ namespace Singleton
         private System.Windows.Forms.Button buttonStudent2Delete;
         private System.Windows.Forms.Button buttonStudent2Save;
         private System.Windows.Forms.GroupBox groupBoxStudent2;
-        private System.Windows.Forms.ComboBox comboBoxStudent2Gender;
-        private System.Windows.Forms.TextBox textBoxStudent2Sid;
-        private System.Windows.Forms.TextBox textBoxStudent2Name;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonStudent3Delete;
         private System.Windows.Forms.Button buttonStudent3Save;
         private System.Windows.Forms.GroupBox groupBoxStudent3;
-        private System.Windows.Forms.ComboBox comboBoxStudent3Gender;
-        private System.Windows.Forms.TextBox textBoxStudent3Sid;
-        private System.Windows.Forms.TextBox textBoxStudent3Name;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.ListBox listBoxMajorList;
+        private System.Windows.Forms.ComboBox comboBoxStudent1Gender;
+        private System.Windows.Forms.TextBox textBoxStudent1Sid;
+        private System.Windows.Forms.TextBox textBoxStudent1Name;
+        private System.Windows.Forms.ComboBox comboBoxStudent2Gender;
+        private System.Windows.Forms.TextBox textBoxStudent2Sid;
+        private System.Windows.Forms.TextBox textBoxStudent2Name;
+        private System.Windows.Forms.ComboBox comboBoxStudent3Gender;
+        private System.Windows.Forms.TextBox textBoxStudent3Sid;
+        private System.Windows.Forms.TextBox textBoxStudent3Name;
+        public System.Windows.Forms.TextBox textBoxNewMajorInput;
     }
 }
 

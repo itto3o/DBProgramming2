@@ -24,6 +24,7 @@ namespace Singleton
             //initialization
         }
 
+        //AutoLoad의 bool 값을 확인하는 함수
         public bool HasAutoLoad()
         {
             MySqlDataReader rdr = DBManager.GetInstance().select("SELECT * FROM DBP_ConfigManager WHERE ID = 1");
@@ -33,20 +34,24 @@ namespace Singleton
             return AutoLoad;
         }
 
+        //AutoLoad를 설정하는 함수도 있으면 좋을 것 같아서 만들었다.
         public void SetAutoLoad(bool changeAutoLoad)
         {
             int toIntAutoLoad = 0;
 
+            //바꿀 autoLoad값이 true면 1의 값을 저장한다.
             if (changeAutoLoad)
                 toIntAutoLoad = 1;
 
             else
                 toIntAutoLoad = 0;
 
-            string query = "UPDATE DBP_ConfigManager SET autoLoad = " + toIntAutoLoad + "WHERE ID = 1";
+            //DB의 autoLoad의 데이터 형식은 boolean이 아닌 tinyInt이므로 0, 1로 구별한다.
+            string query = "UPDATE DBP_ConfigManager SET autoLoad = " + toIntAutoLoad + " WHERE ID = 1";
             DBManager.GetInstance().update(query);
         }
 
+        //최근 사용 index를 읽어온다.
         public int GetRecentlyUsedListIdx()
         {
             MySqlDataReader rdr = DBManager.GetInstance().select("SELECT * FROM DBP_ConfigManager WHERE ID = 1");
@@ -56,9 +61,10 @@ namespace Singleton
             return idx;
         }
 
+        //index를 set하는 함수도 있으면 좋을 것 같아 만들었다.
         public void SetRecentlyUsedListIdx(int changeIdx)
         {
-            string query = "UPDATE DBP_ConfigManager SET autoLoad = " + changeIdx + "WHERE ID = 1";
+            string query = "UPDATE DBP_ConfigManager SET recentlyIdx = " + changeIdx + " WHERE ID = 1";
             DBManager.GetInstance().update(query);
         }
     }
