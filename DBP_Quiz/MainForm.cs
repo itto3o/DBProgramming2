@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,41 +20,60 @@ namespace DBP_Quiz
             InitializeComponent();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        public MainForm(string userID, int adminCheck)
         {
-            string query = "SELECT COUNT(*) as cnt FROM DBP_QUIZ_user WHERE userID = '" + textBoxUserID.Text + "' AND userPW = '" + textBoxUserPW.Text + "'";
-            DataTable dt = DBManager.GetInstance().select(query);
-            DataRow dtRow = dt.Rows[0];
-            if (Convert.ToInt32(dtRow["cnt"]) == 0)
+            InitializeComponent();
+            this.userID = userID;
+            this.admin = adminCheck;
+            welcome();
+        }
+        private void welcome()
+        {
+            if (admin == 1)
             {
-                MessageBox.Show("로그인 실패");
-                textBoxUserID.Text = "";
-                textBoxUserPW.Text = "";
+                labelWelcome.Text = "관리자님 환영합니다.";
+                adminGridView();
             }
 
             else
             {
-                labelWelcome.Text = textBoxUserID.Text + "님 환영합니다.";
-                string queryAdminCheck = "SELECT adminCheck FROM DBP_QUIZ_user WHERE userID = '" + textBoxUserID.Text + "' AND userPW = '" + textBoxUserPW.Text + "'";
-                DataTable dt2 = DBManager.GetInstance().select(queryAdminCheck);
-                DataRow dtRow2 = dt2.Rows[0];
-                if (Convert.ToInt32(dtRow2["adminCheck"]) == 1)
-                {
-                    admin = 1;
-                    adminGridView();
-                }
-                userID = textBoxUserID.Text;
+                LogRecording_login();
+                labelWelcome.Text = userID + "님 환영합니다.";
+                userView();
             }
+        }
 
+        private void LogRecording_login()
+        {
+            DBManager.GetInstance().insert("INSERT INTO DBP_QUIZ_userLog VALUES(NULL, 'login', '" + userID + "', now())");
+        }
+
+        private void LogRecording_logout()
+        {
+            DBManager.GetInstance().insert("INSERT INTO DBP_QUIZ_userLog VALUES(NULL, 'logout', '" + userID + "', now())");
+        }
+
+        private void userView()
+        {
+            menuStripAdmin.Visible = false;
+            labelAdminView.Visible = false;
+            dataGridViewUserDay.Visible = false;
+            dataGridViewMenuDaily.Visible = false;
+            dataGridViewMenuMonthly.Visible = false;
+            LoadMenu();
+            this.Height = 450;
         }
 
         private void adminGridView()
         {
-            DataTable dtUserDaily = DBManager.GetInstance().select("SELECT buyerID, date, COUNT(*) as 판매량, SUM(menuPrice) as 판매액 FROM DBP_QUIZ_sale GROUP BY buyerID, date");
+            labelCasherView.Visible = false;
+
+            //생각을 해봤는데 메뉴를 동적으로 생성해야하지 않을까 메뉴 수정, 추가가 되니까 아 고칠거 많네...
+            DataTable dtUserDaily = DBManager.GetInstance().select("SELECT buyerID, date, COUNT(*) as 판매량, SUM(price) as 판매액 FROM DBP_QUIZ_sale, DBP_QUIZ_menu GROUP BY buyerID, date");
             dataGridViewUserDay.DataSource = dtUserDaily;
-            DataTable dtMenuDaily = DBManager.GetInstance().select("SELECT menuName, date, COUNT(*) as 판매량, SUM(menuPrice) as 판매액 FROM DBP_QUIZ_sale GROUP BY menuName, date");
+            DataTable dtMenuDaily = DBManager.GetInstance().select("SELECT name, date, COUNT(*) as 판매량, SUM(price) as 판매액 FROM DBP_QUIZ_sale, DBP_QUIZ_menu GROUP BY name, date");
             dataGridViewMenuDaily.DataSource = dtMenuDaily;
-            DataTable dtMenuMonthly = DBManager.GetInstance().select("SELECT menuName, MONTH(date) as 월, COUNT(*) as 판매량, SUM(menuPrice) as 판매액 FROM DBP_QUIZ_sale GROUP BY menuName, MONTH(date)");
+            DataTable dtMenuMonthly = DBManager.GetInstance().select("SELECT name, MONTH(date) as 월, COUNT(*) as 판매량, SUM(price) as 판매액 FROM DBP_QUIZ_sale, DBP_QUIZ_menu GROUP BY name, MONTH(date)");
             dataGridViewMenuMonthly.DataSource = dtMenuMonthly;
         }
 
@@ -62,21 +82,84 @@ namespace DBP_Quiz
             this.Close();
         }
 
-        private void buttonSunDae_Click(object sender, EventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
-            DBManager.GetInstance().insert("INSERT INTO DBP_QUIZ_sale VALUES(NULL, 1, '순대국밥', 6000, '" + userID + "', '" + dateTimePickerDate.Value.ToString("yyyy-MM-dd") + "')");
+            //로그아웃 버튼을 클릭했을 때, 또는 그냥 폼을 닫을 때 로그아웃 기록
+            //관리자가 아닐 때만 기록
+            if(admin == 0)
+                LogRecording_logout();
         }
 
-        private void buttonDaesi_Click(object sender, EventArgs e)
-        {
-            DBManager.GetInstance().insert("INSERT INTO DBP_QUIZ_sale VALUES(NULL, 2, '돼지국밥', 6000, '" + userID + "', '" + dateTimePickerDate.Value.ToString("yyyy-MM-dd") + "')");
 
+        //수정, 추가 모두 이 이벤트로 연결
+        private void 메뉴수정ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (MenuAddOrUpdateForm menuAddOrUpdateForm = new MenuAddOrUpdateForm()) {
+                menuAddOrUpdateForm.ShowDialog();
+            }
         }
 
-        private void buttonDdaro_Click(object sender, EventArgs e)
+        //메뉴 동적 생성
+        private void LoadMenu()
         {
-            DBManager.GetInstance().insert("INSERT INTO DBP_QUIZ_sale VALUES(NULL, 3, '따로국밥', 6000, '" + userID + "', '" + dateTimePickerDate.Value.ToString("yyyy-MM-dd") + "')");
+            DataTable menuTable = DBManager.GetInstance().select("SELECT * FROM DBP_QUIZ_menu");
+            int i = 0;
+
+            //한줄씩 읽어서 메뉴 이름
+            foreach (DataRow row in menuTable.Rows)
+            {
+                //메뉴 동적 생성
+                PictureBox pictureBoxMenuImage = new PictureBox();
+                pictureBoxMenuImage.Location = new Point(i * 170 + 85, 130);
+                pictureBoxMenuImage.Width = 170;
+                pictureBoxMenuImage.Height = 140;
+                Controls.Add(pictureBoxMenuImage);
+
+                Button buttonMenuBuy = new Button();
+                buttonMenuBuy.Location = new Point(i * 170 + 85, 290);
+                buttonMenuBuy.Width = 170;
+                buttonMenuBuy.Height = 40;
+                buttonMenuBuy.Click += ButtonMenuBuy_Click;
+                Controls.Add(buttonMenuBuy);
+
+                Label labelMenuPrice = new Label();
+                labelMenuPrice.Location = new Point(i * 170 +140, 335);
+                labelMenuPrice.AutoSize = true;
+                Controls.Add(labelMenuPrice);
+
+                //컨트롤들에 값넣기
+                buttonMenuBuy.Text = row["name"].ToString();
+                labelMenuPrice.Text = row["price"].ToString() + "원";
+
+                if(row["image"] != System.DBNull.Value) {
+                    byte[] menuImage = (byte[])row["image"];
+                    if (menuImage != null)
+                    {
+                        pictureBoxMenuImage.Image = new Bitmap(new MemoryStream(menuImage));
+                        pictureBoxMenuImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                }
+                i++;
+            }
+        }
+
+        private void ButtonMenuBuy_Click(object sender, EventArgs e)
+        {
+            string buttonClickName = ((Button)sender).Text;
+            //여기서 얻은 이름으로 menu 테이블에서 ID를 검색해서 sale테이블에 데이터 삽입 ==> 쿼리 한번으로 될 것 같기도 하고..? WHERE안에 select넣으면 되지 않나
+            //음... ID 하나만 넣을 수는 없는 것 같아
+            DataTable dataTable = DBManager.GetInstance().select("SELECT ID FROM DBP_QUIZ_menu WHERE name = '" + buttonClickName + "'");
+            DataRow dtRow = dataTable.Rows[0];
+            int menuID = Convert.ToInt32(dtRow["ID"]);
+
+            string query = "INSERT INTO DBP_QUIZ_sale VALUES(NULL, " + menuID + ", '" + userID + "', '" + dateTimePickerDate.Value.ToString("yyyy-MM-dd") + "')";
+            DBManager.GetInstance().insert(query);
+        }
+
+        private void userLogCheck_Click(object sender, EventArgs e)
+        {
+            UserLogViewForm userLogViewForm = new UserLogViewForm();
+            userLogViewForm.Show();
         }
     }
 }

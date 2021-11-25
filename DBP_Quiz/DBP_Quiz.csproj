@@ -90,16 +90,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBManager.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuAddOrUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuAddOrUpdateForm.Designer.cs">
+      <DependentUpon>MenuAddOrUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserLogViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserLogViewForm.Designer.cs">
+      <DependentUpon>UserLogViewForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuAddOrUpdateForm.resx">
+      <DependentUpon>MenuAddOrUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +134,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserLogViewForm.resx">
+      <DependentUpon>UserLogViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
