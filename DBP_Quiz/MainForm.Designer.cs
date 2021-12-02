@@ -42,10 +42,14 @@ namespace DBP_Quiz
             this.메뉴관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.메뉴추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.메뉴수정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelTotalPrice = new System.Windows.Forms.Label();
+            this.menuStripCasher = new System.Windows.Forms.MenuStrip();
+            this.지난내역보기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMenuDaily)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMenuMonthly)).BeginInit();
             this.menuStripAdmin.SuspendLayout();
+            this.menuStripCasher.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewUserDay
@@ -98,7 +102,7 @@ namespace DBP_Quiz
             // 
             // dateTimePickerDate
             // 
-            this.dateTimePickerDate.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerDate.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerDate.Location = new System.Drawing.Point(52, 65);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
@@ -133,7 +137,7 @@ namespace DBP_Quiz
             this.menuStripAdmin.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userLogCheck,
             this.메뉴관리ToolStripMenuItem});
-            this.menuStripAdmin.Location = new System.Drawing.Point(0, 0);
+            this.menuStripAdmin.Location = new System.Drawing.Point(0, 28);
             this.menuStripAdmin.Name = "menuStripAdmin";
             this.menuStripAdmin.Size = new System.Drawing.Size(791, 28);
             this.menuStripAdmin.TabIndex = 20;
@@ -169,12 +173,40 @@ namespace DBP_Quiz
             this.메뉴수정ToolStripMenuItem.Text = "수정";
             this.메뉴수정ToolStripMenuItem.Click += new System.EventHandler(this.메뉴수정ToolStripMenuItem_Click);
             // 
+            // labelTotalPrice
+            // 
+            this.labelTotalPrice.AutoSize = true;
+            this.labelTotalPrice.Location = new System.Drawing.Point(179, 104);
+            this.labelTotalPrice.Name = "labelTotalPrice";
+            this.labelTotalPrice.Size = new System.Drawing.Size(102, 15);
+            this.labelTotalPrice.TabIndex = 21;
+            this.labelTotalPrice.Text = "총 결제 금액 :";
+            // 
+            // menuStripCasher
+            // 
+            this.menuStripCasher.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStripCasher.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.지난내역보기ToolStripMenuItem});
+            this.menuStripCasher.Location = new System.Drawing.Point(0, 0);
+            this.menuStripCasher.Name = "menuStripCasher";
+            this.menuStripCasher.Size = new System.Drawing.Size(791, 28);
+            this.menuStripCasher.TabIndex = 22;
+            this.menuStripCasher.Text = "menuStrip1";
+            // 
+            // 지난내역보기ToolStripMenuItem
+            // 
+            this.지난내역보기ToolStripMenuItem.Name = "지난내역보기ToolStripMenuItem";
+            this.지난내역보기ToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.지난내역보기ToolStripMenuItem.Text = "지난 내역 보기";
+            this.지난내역보기ToolStripMenuItem.Click += new System.EventHandler(this.지난내역보기ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(791, 892);
+            this.Controls.Add(this.labelTotalPrice);
             this.Controls.Add(this.dataGridViewMenuMonthly);
             this.Controls.Add(this.dataGridViewMenuDaily);
             this.Controls.Add(this.dateTimePickerDate);
@@ -184,6 +216,7 @@ namespace DBP_Quiz
             this.Controls.Add(this.labelWelcome);
             this.Controls.Add(this.dataGridViewUserDay);
             this.Controls.Add(this.menuStripAdmin);
+            this.Controls.Add(this.menuStripCasher);
             this.MainMenuStrip = this.menuStripAdmin;
             this.Name = "MainForm";
             this.Text = "국밥집 메인 화면";
@@ -193,6 +226,8 @@ namespace DBP_Quiz
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMenuMonthly)).EndInit();
             this.menuStripAdmin.ResumeLayout(false);
             this.menuStripAdmin.PerformLayout();
+            this.menuStripCasher.ResumeLayout(false);
+            this.menuStripCasher.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,6 +248,9 @@ namespace DBP_Quiz
         private System.Windows.Forms.ToolStripMenuItem 메뉴추가ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 메뉴수정ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userLogCheck;
+        private System.Windows.Forms.Label labelTotalPrice;
+        private System.Windows.Forms.MenuStrip menuStripCasher;
+        private System.Windows.Forms.ToolStripMenuItem 지난내역보기ToolStripMenuItem;
     }
 }
 

@@ -28,20 +28,30 @@ namespace DBP_Quiz
             DataTable dt = DBManager.GetInstance().select(query);
             foreach(DataRow row in dt.Rows)
             {
-                string userID = row["userID"].ToString();
+                userID = row["userID"].ToString();
                 string userPW = row["userPW"].ToString();
                 int admin = Convert.ToInt32(row["adminCheck"]);
 
                 if (textBoxIDInput.Text == userID && textBoxPWInput.Text == userPW)
                 {
-                    if (admin == 1)
-                        adminCheck = 1;
                     userID = textBoxIDInput.Text;
+                    if (admin == 1)
+                    {
+                        this.Hide();
+                        adminCheck = 1;
+                        MainForm mainForm = new MainForm(userID, adminCheck, 0);
+                        mainForm.ShowDialog();
+                    }
 
-                    this.Hide();
+                    //user일때만 테이블뜨게
+                    else
+                    {
+                        this.Hide();
+                        TableStatementForm tableStatementForm = new TableStatementForm(userID);
+                        tableStatementForm.ShowDialog();
+                    }
+
                     //로그 기록
-                    MainForm mainForm = new MainForm(userID, adminCheck);
-                    mainForm.ShowDialog();
                     this.Close();
                 }
              }
