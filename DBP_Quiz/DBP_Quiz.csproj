@@ -108,8 +108,20 @@
     <Compile Include="MenuAddOrUpdateForm.Designer.cs">
       <DependentUpon>MenuAddOrUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuChangeCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuChangeCheckForm.Designer.cs">
+      <DependentUpon>MenuChangeCheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleChangeCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleChangeCheckForm.Designer.cs">
+      <DependentUpon>SaleChangeCheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleHistoryViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
     </Compile>
     <Compile Include="TableStatementForm.Designer.cs">
       <DependentUpon>TableStatementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInfoChangeForm.Designer.cs">
+      <DependentUpon>UserInfoChangeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserLogViewForm.cs">
       <SubType>Form</SubType>
@@ -137,6 +155,9 @@
     <EmbeddedResource Include="MenuAddOrUpdateForm.resx">
       <DependentUpon>MenuAddOrUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MenuChangeCheckForm.resx">
+      <DependentUpon>MenuChangeCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -146,11 +167,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SaleChangeCheckForm.resx">
+      <DependentUpon>SaleChangeCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaleHistoryViewForm.resx">
       <DependentUpon>SaleHistoryViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TableStatementForm.resx">
       <DependentUpon>TableStatementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInfoChangeForm.resx">
+      <DependentUpon>UserInfoChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserLogViewForm.resx">
       <DependentUpon>UserLogViewForm.cs</DependentUpon>

@@ -14,9 +14,11 @@ namespace DBP_Quiz
 {
     public partial class MenuAddOrUpdateForm : Form
     {
-        public MenuAddOrUpdateForm()
+        private string userID_ = "";
+        public MenuAddOrUpdateForm(string userID)
         {
             InitializeComponent();
+            this.userID_ = userID;
         }
 
         private void buttonLoadImage_Click(object sender, EventArgs e)
@@ -59,6 +61,12 @@ namespace DBP_Quiz
                 cmd.ExecuteNonQuery();
             }
             fs.Close();
+
+            //지금 저장하는게 메뉴테이블의 몇번인지 모른다..!
+            DataTable dataTableMenu = DBManager.GetInstance().select("SELECT ID FROM DBP_QUIZ_menu WHERE name = '" + textBoxMenuName.Text + "'");
+            DataRow dataRowMenu = dataTableMenu.Rows[0];
+
+            DBManager.GetInstance().insert("INSERT INTO DBP_QUIZ_menuChange VALUES(NULL, '" + userID_ + "', " + Convert.ToInt32(dataRowMenu["ID"]) + ", " + textBoxMenuPrice.Text + ", now())");
 
             MessageBox.Show("저장 완료");
             this.Close();

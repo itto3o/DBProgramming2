@@ -121,7 +121,7 @@ namespace DBP_Quiz
         //수정, 추가 모두 이 이벤트로 연결
         private void 메뉴수정ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (MenuAddOrUpdateForm menuAddOrUpdateForm = new MenuAddOrUpdateForm()) {
+            using (MenuAddOrUpdateForm menuAddOrUpdateForm = new MenuAddOrUpdateForm(userID)) {
                 menuAddOrUpdateForm.ShowDialog();
             }
         }
@@ -249,16 +249,40 @@ namespace DBP_Quiz
             labelTotalPrice.Text = "총 결제 금액 : " + totalPrice + "원";
         }
 
-        private void userLogCheck_Click(object sender, EventArgs e)
+        private void 지난내역보기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaleHistoryViewForm saleHistoryViewForm = new SaleHistoryViewForm(userID);
+            saleHistoryViewForm.Show();
+        }
+
+        private void 로그인로그아웃확인ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserLogViewForm userLogViewForm = new UserLogViewForm();
             userLogViewForm.Show();
         }
 
-        private void 지난내역보기ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 메뉴변경정보확인ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaleHistoryViewForm saleHistoryViewForm = new SaleHistoryViewForm(userID);
-            saleHistoryViewForm.Show();
+            //테이블 하나 따로 만들어서 거기에 바뀔때마다 기록..
+            //for문을 뒤부터 돌아서 메뉴이름이 그거인 거에서 가장 최신 정보 2개만 가져오게 하면 될까
+            //아니면 그냥 메뉴를 listbox에서 고르면 그것에 대한 변경사항을 모두 가져오게 할까
+            MenuChangeCheckForm menuChangeCheckForm = new MenuChangeCheckForm();
+            menuChangeCheckForm.Show();
+        }
+
+        private void 주문정보변경확인ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //이건 어떻게 하는거지..?
+            //취소기능밖에 못하는뎀 그러면 취소찍힌 row를 들고와야하나
+            //원래 row를 들고와서 그 메뉴에 취소있는 애들을 들고와서 after에 계산한 다음에 넣어주기?
+            SaleChangeCheckForm saleChangeCheckForm = new SaleChangeCheckForm();
+            saleChangeCheckForm.Show();
+        }
+
+        private void buttonUserInfoChange_Click(object sender, EventArgs e)
+        {
+            UserInfoChangeForm userInfoChangeForm = new UserInfoChangeForm(userID);
+            userInfoChangeForm.ShowDialog();
         }
     }
 }

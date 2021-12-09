@@ -39,12 +39,16 @@ namespace DBP_Quiz
             this.dataGridViewMenuMonthly = new System.Windows.Forms.DataGridView();
             this.menuStripAdmin = new System.Windows.Forms.MenuStrip();
             this.userLogCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.로그인로그아웃확인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.메뉴변경정보확인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.주문정보변경확인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.메뉴관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.메뉴추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.메뉴수정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTotalPrice = new System.Windows.Forms.Label();
             this.menuStripCasher = new System.Windows.Forms.MenuStrip();
             this.지난내역보기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonUserInfoChange = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMenuDaily)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMenuMonthly)).BeginInit();
@@ -145,10 +149,34 @@ namespace DBP_Quiz
             // 
             // userLogCheck
             // 
+            this.userLogCheck.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.로그인로그아웃확인ToolStripMenuItem,
+            this.메뉴변경정보확인ToolStripMenuItem,
+            this.주문정보변경확인ToolStripMenuItem});
             this.userLogCheck.Name = "userLogCheck";
             this.userLogCheck.Size = new System.Drawing.Size(123, 24);
             this.userLogCheck.Text = "유저 로그 확인";
-            this.userLogCheck.Click += new System.EventHandler(this.userLogCheck_Click);
+            // 
+            // 로그인로그아웃확인ToolStripMenuItem
+            // 
+            this.로그인로그아웃확인ToolStripMenuItem.Name = "로그인로그아웃확인ToolStripMenuItem";
+            this.로그인로그아웃확인ToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.로그인로그아웃확인ToolStripMenuItem.Text = "로그인/로그아웃 확인";
+            this.로그인로그아웃확인ToolStripMenuItem.Click += new System.EventHandler(this.로그인로그아웃확인ToolStripMenuItem_Click);
+            // 
+            // 메뉴변경정보확인ToolStripMenuItem
+            // 
+            this.메뉴변경정보확인ToolStripMenuItem.Name = "메뉴변경정보확인ToolStripMenuItem";
+            this.메뉴변경정보확인ToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.메뉴변경정보확인ToolStripMenuItem.Text = "메뉴 정보 변경 확인";
+            this.메뉴변경정보확인ToolStripMenuItem.Click += new System.EventHandler(this.메뉴변경정보확인ToolStripMenuItem_Click);
+            // 
+            // 주문정보변경확인ToolStripMenuItem
+            // 
+            this.주문정보변경확인ToolStripMenuItem.Name = "주문정보변경확인ToolStripMenuItem";
+            this.주문정보변경확인ToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.주문정보변경확인ToolStripMenuItem.Text = "주문 정보 변경 확인";
+            this.주문정보변경확인ToolStripMenuItem.Click += new System.EventHandler(this.주문정보변경확인ToolStripMenuItem_Click);
             // 
             // 메뉴관리ToolStripMenuItem
             // 
@@ -200,12 +228,23 @@ namespace DBP_Quiz
             this.지난내역보기ToolStripMenuItem.Text = "지난 내역 보기";
             this.지난내역보기ToolStripMenuItem.Click += new System.EventHandler(this.지난내역보기ToolStripMenuItem_Click);
             // 
+            // buttonUserInfoChange
+            // 
+            this.buttonUserInfoChange.Location = new System.Drawing.Point(629, 65);
+            this.buttonUserInfoChange.Name = "buttonUserInfoChange";
+            this.buttonUserInfoChange.Size = new System.Drawing.Size(121, 23);
+            this.buttonUserInfoChange.TabIndex = 23;
+            this.buttonUserInfoChange.Text = "회원 정보 변경";
+            this.buttonUserInfoChange.UseVisualStyleBackColor = true;
+            this.buttonUserInfoChange.Click += new System.EventHandler(this.buttonUserInfoChange_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(791, 892);
+            this.Controls.Add(this.buttonUserInfoChange);
             this.Controls.Add(this.labelTotalPrice);
             this.Controls.Add(this.dataGridViewMenuMonthly);
             this.Controls.Add(this.dataGridViewMenuDaily);
@@ -251,6 +290,10 @@ namespace DBP_Quiz
         private System.Windows.Forms.Label labelTotalPrice;
         private System.Windows.Forms.MenuStrip menuStripCasher;
         private System.Windows.Forms.ToolStripMenuItem 지난내역보기ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 로그인로그아웃확인ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 메뉴변경정보확인ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 주문정보변경확인ToolStripMenuItem;
+        private System.Windows.Forms.Button buttonUserInfoChange;
     }
 }
 
