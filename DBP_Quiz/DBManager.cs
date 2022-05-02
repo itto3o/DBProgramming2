@@ -11,7 +11,11 @@ namespace DBP_Quiz
     class DBManager
     {
         private static DBManager instance_ = new DBManager();
+<<<<<<< HEAD
         private string connection_string = "Server={serverIP};Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8";
+=======
+        private string connection_string = "Server=(severIP);Uid=s5584534;Pwd=s5584534;Charset=utf8";
+>>>>>>> 51bbed7 (Update DBManager.cs)
 
         private DBManager()
         {
